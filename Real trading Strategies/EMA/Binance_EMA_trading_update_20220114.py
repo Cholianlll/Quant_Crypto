@@ -1,18 +1,12 @@
 # Binance trading system, refer to the backtrader framework
+####################### Github Version #####################
+
+
 #! Author: Cholian Li
 # Contact: 
 #! cholianli970518@gmail.com
 # Created at 20220101
 
-'''
-Log:
-20220114: debug
-Error: Get_lastest_orderId(symbol)
-Reason: the order created time more than 7days will not be found
-
-solution: delete the function
-
-'''
 
 import hmac
 import time
@@ -171,11 +165,11 @@ def future_data(pair,interval,contractType = 'PERPETUAL'):
     return data
 
 
-def ema_indicator(data):
+def ema_indicator(data,ema_a_period = 36,ema_b_period = 60):
     
     close = data['Close']
-    ema_a = ta.EMA(close,timeperiod=36).tolist()
-    ema_b = ta.EMA(close,timeperiod=60).tolist()
+    ema_a = ta.EMA(close,timeperiod=ema_a_period).tolist()
+    ema_b = ta.EMA(close,timeperiod=ema_b_period).tolist()
 
     return ema_a,ema_b
 
@@ -281,22 +275,26 @@ def account_P_L():
 
 if __name__ == '__main__':
     
+# =============== Parameters =========================
     symbol = 'BTCUSDT'
     quantity = 0.037
     interval = '6h'
-    t = random.randint(5,20)
     
+    ema_a_period = 36
+    ema_b_period = 60
+# =============== API keys ==========================
     #! Input your key and secret from Binance, then run directly.
 
     KEY = ''
     SECRET = ''
 
+# ========= Main body ================================
     # for spot market
     # BASE_URL = 'https://api.binance.com' # production base url
 
     # for future market
     BASE_URL = 'https://fapi.binance.com' # production base url
-    
+    t = random.randint(5,20)
     
     while 1 != 0:
         Balance,UnrealizedProfit = account_P_L()

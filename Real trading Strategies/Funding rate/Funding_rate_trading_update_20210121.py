@@ -536,11 +536,10 @@ def runstart():
 if __name__ == '__main__':
     
 # =================================================================================================    
-    #! 这个apikey是链接future 账户的，可以进行实盘交易的
-    #! 谨慎！
+    #! Input your KEY from Binance and Secret
 
-    KEY = '3ndi9bq9FcoeFoFX1hNEocw66O1TzG51l822sIo78pi0Qn2yLeKrIeNzEWJ8wKDj'
-    SECRET = 'Okr8AvCTIotRHChXcWrZSpLIgOVbgR7Igy4ItVXoerE5gcOhYqW09rAAHVxgoqil'
+    KEY = ''
+    SECRET = ''
     
     leverage = 3
     trading_amount = 300 # e.g 100 -> $100
