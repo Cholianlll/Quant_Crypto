@@ -16,7 +16,7 @@ Emial: cholianli970518@gmail.com
 
 * Strategies
 
-    * [EMA strategy](#ema)
+    * [EMA strategy](#ema-strategy)
     * [Funding rate strategy](#funding-rate-strategy)
 
     * ARIMA based arbitrage strategy (updating)
