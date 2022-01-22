@@ -4,7 +4,7 @@ Author: Cholian (Chao Li)
 
 Emial: cholianli970518@gmail.com
 
-## All the code is just <span style="color:red"> a free version </span> with basic function, but <span style="color:yellow">still can be run and...make a profit</span>
+## All the code is just <span style="color:red"> a free version </span> with basic functions, but <span style="color:yellow">still can be run and...make a profit</span>
 
 <span style="color:red">If you want the completed code, please contact with me</span>.
 
