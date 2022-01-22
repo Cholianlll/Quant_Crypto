@@ -133,7 +133,7 @@ Given an example with the XEMUSDT (fundingrate: -0.3193%)
 | Transaction fee: | 0.02% * 2 * 3 | -0.12% | Buy and sell for each collection|
 |95% confidence price change| 0.08% * 3 | -0.24% |The price of certain trading pair will fluctuate between [-0.053, 0.0253], with 5% significant level|
 | Daily profit | - | 0.5979%|
-| Annual return | $(1.005979)^{365}$ | 8.8096|
+| Annual return | (1.005979)^{365} | 8.8096|
 
 Theoretically, it could achieve a very high return.
 
