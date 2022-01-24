@@ -19,8 +19,12 @@ Emial: cholianli970518@gmail.com
     * [EMA strategy](#ema-strategy)
     * [Funding rate strategy](#funding-rate-strategy)
 
-    * ARIMA based arbitrage strategy (updating)
-
+    * Cross-exchange arbitrage strategy (updating)
+    * ARIMA-based volatility modelling strategy (updating)
+    * GJR-GARCH-based multiple tokens strategies (updating)
+    * LSTM-based multiple tokens strategy (updating)
+    * Attentions-based trend signals identification (updating)
+    
 ## Introduction
 
 Different quantitative strategies on the cryptocurrency, where has been verified with real trading.
