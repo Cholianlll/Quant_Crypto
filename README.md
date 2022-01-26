@@ -1,18 +1,16 @@
-# Quantitative trading on Cryptocurrency
+# Quantitative Trading on Cryptocurrency
 
-Author: Cholian (Chao Li)
+Cholian (Chao Li)
 
-Emial: cholianli970518@gmail.com
+cholianli970518 dot gmail dot com
 
-## All the code is just <span style="color:red"> a free version </span> with basic functions, but <span style="color:yellow">still can be run and...make a profit</span>
-
-<span style="color:red">If you want the completed code, please contact with me</span>.
+> This is a free version with limited features. If you want to experience the complete features, please contact the author.
 
 # Table of Contents
 * [Introduction](#introduction)
 * [Open an account](#open-an-account)
 
-    * [Binance]()
+    * [Binance](#biance)
 
 * Strategies
 
@@ -24,7 +22,7 @@ Emial: cholianli970518@gmail.com
     * GJR-GARCH-based multiple tokens strategies (updating)
     * LSTM-based multiple tokens strategy (updating)
     * Attentions-based trend signals identification (updating)
-    
+
 ## Introduction
 
 Different quantitative strategies on the cryptocurrency, where has been verified with real trading.
@@ -32,10 +30,12 @@ Different quantitative strategies on the cryptocurrency, where has been verified
 **Exchange**: [Binance](https://www.binance.com/en)
 
 **API**: [Binance API](https://binance-docs.github.io/apidocs/spot/en/)
+
 ## Open an account
 
 ### Binance
-Click: [Open an account in Binance](https://accounts.binance.com/en/register)
+
+[Open an account in Binance](https://accounts.binance.com/en/register)
 
 ## EMA strategy
 
@@ -50,44 +50,33 @@ An exponential moving average is a technical indicator that gives greater weight
 
 When one moving average moves above another, it creates a profitable trading opportunity. One of the most effective crossover strategies is known as the golden cross. When the 50 EMA moves above the 200 SMA, it indicates that short-term bulls are becoming more aggressive, while long-term traders are still bullish....[Read more](https://learn.bybit.com/trading/exponential-moving-average-ema-crypto/)
 
-![EMA plot](./Doc/EMAplot.png)
+![EMA plot](./docs/EMAplot.png)
+
 Reference: https://learn.bybit.com/trading/exponential-moving-average-ema-crypto/
 
 > Strategy parameters
 
+```python
+symbol = 'BTCUSDT' # trading symbol
+quantity = 0.037 # trading quantity
+# Trading notional value = Market price * quantity.
+interval = '6h' # trading based frequency, for more frequency, please refer to the [Binance API doc](https://binance-docs.github.io/apidocs/spot/en/#change-log)
+ema_a_period = 36 # ema_a refers to the faster line
+ema_b_period = 60 # while ema_b refer to the slow line.
 ```
-symbol = 'BTCUSDT'
-```
-This is the trading symbol.
-
-```
-quantity = 0.037 
-```
-This is the trading quantity.
-
-Trading notional value = Market price * quantity.
-
-```
-interval = '6h'
-```
-This is the trading based frequency, for more frequency, please refer to the [Binance API doc](https://binance-docs.github.io/apidocs/spot/en/#change-log)
-
-```
-ema_a_period = 36
-ema_b_period = 60
-```
-ema_a refers to the faster line while ema_b refer to the slow line.
 
 > Run the strategy
 
-Create the Binance API key and Secret in [Link](https://www.binance.com/en/support/faq/360002502072)
+Follow the [official instruction](https://www.binance.com/en/support/faq/360002502072) to create a pair of Binance API key and secret.
 
-```
+```python
 KEY = 'your API KEY'
 SECRET = 'your API SECRET'
 ```
-Then,
-```
+
+Then execute the script with:
+
+```bash
 python Binance_EMA_trading_update_20220114.py
 ```
 > Backtesting parameters
@@ -104,7 +93,7 @@ python Binance_EMA_trading_update_20220114.py
 | Commission | 0.04%|
 
 
-> Backtesting result: 
+> Backtesting result:
 
 ```
 Sharp Ratio: 3.56
@@ -123,7 +112,8 @@ Funding rates are periodic payments either to traders that are long or short bas
 
 Funding rates on Binance are collected every hour and we can see that some crypto assets have reached more than 1% a day. Essentially anyone who is short on the DEFI-USDT contract will be collecting 0.3714% every eight hours to hold that position.......[Read more](https://jamesbachini.com/futures-funding-rate-strategy/)
 
-![EMA plot](./Doc/FundingRate.png)
+![EMA plot](./docs/FundingRate.png)
+
 data: [coinglass](https://www.coinglass.com/zh/FundingRate)
 
 
@@ -149,29 +139,31 @@ After the funding rate collection finished, closing the current position.
 
 > Strategy parameters
 
-```
+```python
 KEY = 'your API KEY'
 SECRET = 'your API SECRET'
 ```
-Create the Binance API key and Secret in [Link](https://www.binance.com/en/support/faq/360002502072)
 
-```
+Follow the [official instruction](https://www.binance.com/en/support/faq/360002502072) to create a pair of Binance API key and secret.
+
+```python
 leverage = 3
 ```
 
 The maximum amount of [Leverage](https://www.binance.com/en/support/faq/360033162192) available depends on the notional value of your position—the larger the position, the lower the leverage.
 
-```
+```python
 trading_amount = 300 # e.g 100 -> $100
 ```
+
 `Total size` = `trading_amount` * `entry Price` * `leverage`
 
-```
+```python
 funding_rate_bound = 0.0020
 ```
 The minimum absolute funding rate. e.g: `abs(-0.3193%)>0.002`, if there is no pair satisfied the minimum funding rate bound, nothing will be executed during this strategy.
 
-```
+```python
 advance_time = 1
 lag_time = 15
 ```
@@ -181,7 +173,7 @@ Given an example:
 
 (1 minute)
 
-8:00:00 Funding rate collection 
+8:00:00 Funding rate collection
 
 8:01:00 Close the position with a [LIMIT order](https://www.binance.com/en/support/faq/360033779452)
 
@@ -193,7 +185,7 @@ note: [LIMIT order](https://www.binance.com/en/support/faq/360033779452) will ha
 
 > How to run the strategy
 
-```
+```bash
 python Funding_rate_trading_update_20210121.py
 ```
 
