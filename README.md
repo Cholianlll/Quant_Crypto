@@ -23,6 +23,8 @@ cholianli970518 dot gmail dot com
     * LSTM-based multiple tokens strategy (updating)
     * Attentions-based trend signals identification (updating)
 
+* [Useful link and website for cryptocurrency](#useful-link-and-website-for-cryptocurrency)
+
 ## Introduction
 
 Different quantitative strategies on the cryptocurrency, where has been verified with real trading.
@@ -188,4 +190,64 @@ note: [LIMIT order](https://www.binance.com/en/support/faq/360033779452) will ha
 ```bash
 python Funding_rate_trading_update_20210121.py
 ```
+
+
+# Useful link and website for cryptocurrency
+
+## Exchange
+
+[CoinBase](https://www.coinbase.com/)
+
+[Binance](https://www.binance.com/)
+
+[Okx/Okex](https://www.okx.com/)
+
+[Bybit](https://www.bybit.com/)
+
+## APIs
+
+[Binance API](https://binance-docs.github.io/apidocs/spot/en/#change-log)
+
+[OKEX v3](https://www.okx.com/docs/en/)
+
+[OKEX v5](https://www.okx.com/docs-v5/en/)
+
+[cryptopanic](https://cryptopanic.com/developers/api/)
+
+## Quant on Cryptocurrency
+
+* [FMZ square](https://www.fmz.com/square)
+
+* [比特币布道者](http://btc.mom/)
+
+
+
+## News
+
+* [CoinDesk](https://www.coindesk.com/)
+
+* [Defistation](https://www.defistation.io/)
+
+* [BSCSACN](https://bscscan.com/)
+
+* [YieldWatch](https://www.yieldwatch.net/)
+
+* [CoinMarketCap](https://coinmarketcap.com/)
+
+* [CoinGlass](https://www.coinglass.com/)
+
+* [Bitcoin News](https://news.bitcoin.com/about-bitcoin-news/)*
+
+* [律动](https://www.theblockbeats.info/)
+
+## On-time news
+
+[cryptopanic](https://cryptopanic.com/)
+
+## Crypto wallet
+
+[Metamask](https://metamask.io/)
+
+
+
 
