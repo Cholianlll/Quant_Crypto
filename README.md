@@ -185,6 +185,28 @@ Given an example:
 
 note: [LIMIT order](https://www.binance.com/en/support/faq/360033779452) will have lower commission fee than [MARKET order](https://www.binance.com/en/support/faq/360033779452)
 
+
+Or (In real trading)
+
+7:59:55 Filtering the token with maximum funding rate (threshold: `t = 0.2%`)
+
+7:59:58 Open a position [MARKET order](https://www.binance.com/en/support/faq/360033779452) according to the positive or negative funding rate.
+
+(1 minute)
+
+8:00:00 Funding rate collection
+
+8:00:00:01 Detecting if received the funding fate.
+
+.... 
+
+every 0.1 second for one detection.
+
+....
+
+8:00:07:08 Received the funding fate, close the position immediately with [MARKET order](https://www.binance.com/en/support/faq/360033779452)
+
+
 > How to run the strategy
 
 ```bash
