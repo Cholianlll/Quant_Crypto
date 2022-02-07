@@ -185,9 +185,8 @@ Given an example:
 
 note: [LIMIT order](https://www.binance.com/en/support/faq/360033779452) will have lower commission fee than [MARKET order](https://www.binance.com/en/support/faq/360033779452)
 
------------------------------
-Or (In real trading)
------------------------------
+
+> Real trading implementation
 
 7:59:55 Filtering the token with maximum funding rate (threshold: `t = 0.2%`)
 
