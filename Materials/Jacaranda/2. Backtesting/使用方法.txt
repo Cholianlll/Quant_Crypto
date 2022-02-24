@@ -1,0 +1,7 @@
+第一步：运行 Binance_future.ipybn
+
+第二步，将 “输出” 中的文件复制粘贴到 “Jac_BtcFuture_更新文件_update_Cholian_20220103”-“输出 sheet”中
+
+Author: Cholian
+Contact: cholianli970518@gmail.com
+20220103

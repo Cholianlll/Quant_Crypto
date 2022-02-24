@@ -1,9 +1,6 @@
 # Binance trading system, refer to the backtrader framework
-####################### Github Version #####################
-
-
 #! Author: Cholian Li
-# Contact:
+# Contact: 
 #! cholianli970518@gmail.com
 # Created at 20220101
 
@@ -21,7 +18,17 @@ import pandas as pd
 import talib as ta
 import datetime
 
+#! 这个apikey是链接future 账户的，可以进行实盘交易的
+#! 谨慎！
 
+KEY = ''
+SECRET = ''
+
+# for spot market
+# BASE_URL = 'https://api.binance.com' # production base url
+
+# for future market
+BASE_URL = 'https://fapi.binance.com' # production base url
 
 
 
@@ -49,7 +56,7 @@ def dispatch_request(http_method):
 # used for sending request requires the signature
 def send_signed_request(http_method, url_path, payload={}):
     query_string = urlencode(payload, True)
-
+    
     if query_string:
         query_string = "{}&timestamp={}".format(query_string, get_timestamp())
     else:
@@ -92,10 +99,10 @@ def position(pos_amt):
         return "SELL"
     else:
         return "Empty"
-
-
+    
+    
 def Holding_info(symbol):
-
+    
     # obtain the current account info
     response = send_signed_request('GET', '/fapi/v2/account')
     account_positions = json_normalize(response['positions'])
@@ -105,42 +112,51 @@ def Holding_info(symbol):
     symbol_info = find(response['positions'],symbol)
     symbol_pos_amt = float(symbol_info['positionAmt'])
     symbol_info['position'] = position(symbol_pos_amt)
-
+    
     return symbol_info
 
 
 def Current_position(symbol):
     hold_pos = Holding_info(symbol)['position']
     hold_amt = Holding_info(symbol)['positionAmt']
-
+    
     return hold_pos,hold_amt
+   
+''' ======  Module: Current position - end ====== ''' 
 
-''' ======  Module: Current position - end ====== '''
 
 
-
-''' ======  Module: Order status - start ====== '''
+''' ======  Module: Order status - start ====== ''' 
 
 def Order_status(symbol:str,orderId:int):
-
+    
     params = {
     'symbol': symbol,
     'orderId': orderId,
     # 'origClientOrderId':"zb0BWGDa0g1CTYEBYJiHtf"
     }
-
+    
     response = send_signed_request('GET', '/fapi/v1/order',params)
     return response['status']
 
+def Get_lastest_orderId(symbol):
+    params = {
+    'symbol': symbol,
+    }
+    response = send_signed_request('GET', '/fapi/v1/allOrders',params)
+    lastest_order_id = response[-1]['orderId']
+    lastest_order_status = response[-1]['status']
+    
+    return response[-1]['status']
 
-''' ======  Module: Order status - end ====== '''
+''' ======  Module: Order status - end ====== ''' 
 
 
 
-''' ======  Module: data obtain and indicator - start ====== '''
+''' ======  Module: data obtain and indicator - start ====== ''' 
 
 def future_data(pair,interval,contractType = 'PERPETUAL'):
-
+    
     url_path = '/fapi/v1/continuousKlines'
     params = {
     'pair': pair,
@@ -161,24 +177,24 @@ def future_data(pair,interval,contractType = 'PERPETUAL'):
 
     # transfer the object to float
     data.iloc[:,1:6] = data.iloc[:,1:6].astype(float)
-
+    
     return data
 
 
-def ema_indicator(data,ema_a_period = 36,ema_b_period = 60):
-
+def ema_indicator(data):
+    
     close = data['Close']
-    ema_a = ta.EMA(close,timeperiod=ema_a_period).tolist()
-    ema_b = ta.EMA(close,timeperiod=ema_b_period).tolist()
+    ema_a = ta.EMA(close,timeperiod=36).tolist()
+    ema_b = ta.EMA(close,timeperiod=60).tolist()
 
     return ema_a,ema_b
 
-''' ======  Module: data obtain and indicator - end ====== '''
+''' ======  Module: data obtain and indicator - end ====== ''' 
 
-''' ======  Module: Trading Operation - start ====== '''
+''' ======  Module: Trading Operation - start ====== ''' 
 
 def Order_BUY_Market(symbol,quantity):
-
+    
     params = {
         'symbol': symbol,
         'side': 'BUY',
@@ -189,7 +205,7 @@ def Order_BUY_Market(symbol,quantity):
     # print(response)
 
 def Order_SELL_Market(symbol,quantity = 0.002):
-
+    
     params = {
         'symbol': symbol,
         'side': 'SELL',
@@ -200,62 +216,72 @@ def Order_SELL_Market(symbol,quantity = 0.002):
     response = send_signed_request('POST', '/fapi/v1/order',params)
     # print(response)
 
-''' ======  Module: Trading Operation - end ====== '''
+''' ======  Module: Trading Operation - end ====== ''' 
 
-''' ======  Module: Runing - start ====== '''
+''' ======  Module: Runing - start ====== ''' 
 def run_start(symbol,interval='8h',quantity = 0.002):
     # param
     # symbol = 'ETHUSDT'
     # interval = '8h'
     # quantity = 0.002
-
+    
     # order and position info
     current_position,current_amt = Current_position(symbol)
     print(f'Current holding position : {current_position}, quantity: {current_amt}')
+    
+    lastset_orderId = Get_lastest_orderId(symbol)
 
     # data and indicator
     data = future_data(symbol,interval)
     ema_a,ema_b = ema_indicator(data)
     print(f"Ema_a indicator: {ema_a[-1]}, Ema_b indicator: {ema_b[-1]}")
+    
+    # There is an pending order
+    if lastset_orderId in ['NEW']:
+        print("Order pending")
+        #! if the ordered price too large or too less, needed to be changed
+        return
 
-    # 36 > 60, we should hold a buy position
-    if ema_a[-1] > ema_b[-1]:
-        # if it exists an buy order, nothing to do
-        if current_position in ['BUY']:
-            print('Already in //BUY// position, no order needed to execute')
-            return
-
-        elif current_position in ['SELL']:
-            Order_BUY_Market(symbol, quantity)
-            print('Close the previous //SELL// order')
-            time.sleep(5)
-            Order_BUY_Market(symbol, quantity)
-            print('Place a //BUY// order')
-            return
-
-        elif current_position in ['Empty']:
-            Order_BUY_Market(symbol, quantity)
-            print('Place a //BUY// order')
-            return
-
-    elif ema_a[-1] < ema_b[-1]:
-        # reverse to the above the operation
-        if current_position in ['SELL']:
-            print('Already in //SELL// position, no order needed to execute')
-            return
-
-        elif current_position in ['BUY']:
-            print('Close the previous //BUY// order')
-            Order_SELL_Market(symbol,quantity)
-
-            print('Place a //SELL// order')
-            Order_SELL_Market(symbol,quantity)
-            return
-        elif current_position in ['Empty']:
-            print('Place a //SELL// order')
-            Order_SELL_Market(symbol,quantity)
-            return
-
+    # No pending order
+    else:
+        # 36 > 60, we should hold a buy position
+        if ema_a[-1] > ema_b[-1]:
+            # if it exists an buy order, nothing to do
+            if current_position in ['BUY']:
+                print('Already in //BUY// position, no order needed to execute')
+                return 
+            
+            elif current_position in ['SELL']:
+                Order_BUY_Market(symbol, quantity)
+                print('Close the previous //SELL// order')
+                time.sleep(5)
+                Order_BUY_Market(symbol, quantity)
+                print('Place a //BUY// order')
+                return
+    
+            elif current_position in ['Empty']:
+                Order_BUY_Market(symbol, quantity)
+                print('Place a //BUY// order')
+                return
+            
+        elif ema_a[-1] < ema_b[-1]:
+            # reverse to the above the operation
+            if current_position in ['SELL']:
+                print('Already in //SELL// position, no order needed to execute')
+                return 
+            
+            elif current_position in ['BUY']:
+                print('Close the previous //BUY// order')
+                Order_SELL_Market(symbol,quantity)
+                
+                print('Place a //SELL// order')
+                Order_SELL_Market(symbol,quantity)
+                return
+            elif current_position in ['Empty']:
+                print('Place a //SELL// order')
+                Order_SELL_Market(symbol,quantity)
+                return
+            
 
 def account_P_L():
     # ## USER_DATA endpoints, call send_signed_request #####
@@ -263,43 +289,27 @@ def account_P_L():
     account_assets = json_normalize(response['assets'])
     account_assets = account_assets.set_index('asset')
     asset = ['USDT']
-
+    
     Balance = account_assets.loc[asset]['walletBalance'].values[0]
     UnrealizedProfit = account_assets.loc[asset]['unrealizedProfit'].values[0]
-
+    
     return float(Balance),float(UnrealizedProfit)
-''' ======  Module: Runing - end ====== '''
+''' ======  Module: Runing - end ====== ''' 
 
 
 
 
 if __name__ == '__main__':
-
-# =============== Parameters =========================
+    
     symbol = 'BTCUSDT'
-    quantity = 0.037
-    interval = '6h'
-
-    ema_a_period = 36
-    ema_b_period = 60
-# =============== API keys ==========================
-    #! Input your key and secret from Binance, then run directly.
-
-    KEY = ''
-    SECRET = ''
-
-# ========= Main body ================================
-    # for spot market
-    # BASE_URL = 'https://api.binance.com' # production base url
-
-    # for future market
-    BASE_URL = 'https://fapi.binance.com' # production base url
+    quantity = 0.003
+    interval = '8h'
     t = random.randint(5,20)
-
+    
     while 1 != 0:
         Balance,UnrealizedProfit = account_P_L()
         cur_time = datetime.datetime.now()
-
+        
         print('========================================')
         print(f'Time: {cur_time}')
         print(f"Current account balance is: {Balance}")
@@ -309,4 +319,4 @@ if __name__ == '__main__':
         run_start(symbol,interval,quantity)
         print('========================================')
         print()
-        time.sleep(60)
+        time.sleep(t)
