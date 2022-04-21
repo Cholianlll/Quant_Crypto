@@ -5,13 +5,12 @@ import talib as ta
 
 def multiple_ta(data):
     
-
     open = data['Open']
     high = data['High']
     low = data['Low']
     close = data['Close']
     volume = data['Volume']
-    date = data['Close_time']
+    date = data['date']
         
     # ta Overlap Studies Functions && max_min_scaler
     ind_upperband, ind_middleband, ind_lowerband = ta.BBANDS(close, timeperiod=7, nbdevup=2, nbdevdn=2, matype=0) # BBANDS - Bollinger Bands
@@ -307,7 +306,7 @@ def multiple_ta(data):
         
         #MathOperatorFunctions
         'ind_ADD', 'ind_DIV', 'ind_MAX', 'ind_MAXINDEX', 'ind_MIN', 'ind_MININDEX', 'ind_min', 'ind_max', 'ind_minidx', 'ind_maxidx',
-        'ind_MULT', 'ta.SUB', 'ta.SUM'
+        'ind_MULT', 'ind_SUB', 'ind_SUM'
     ]
     
     return ind_list,name_list
