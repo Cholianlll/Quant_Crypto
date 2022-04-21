@@ -3,7 +3,6 @@
 ## Data collection
 
 ### Market quotes
-#### Market quotes
 
 > Raw data
 
@@ -28,7 +27,7 @@
 
 https://binance-docs.github.io/apidocs/spot/en/
 
-#### Technical indicators
+### Technical indicators
 #### [Overlap Studies](https://mrjbq7.github.io/ta-lib/func_groups/overlap_studies.html)
 
 ```
@@ -203,13 +202,48 @@ VAR                  Variance
 
 Resources: https://mrjbq7.github.io/ta-lib/
 
-#### Global Currency
+### Global Currency
+
+```
+CNY/USD    China
+JPY/USD    Japanese
+EUR/USD    Euro
+GBP/USD    British
+INR/USD    India
+BRL/USD    Brazil
+CAD/USD		 Canada
+KRW/USD	   South Korea
+```
 
 > Resource
 
 https://www.bis.org/statistics/xrusd.htm
 
-#### BlockChain information
+### BlockChain information
+
+| Feature name                     | Explanation                                                  |
+| -------------------------------- | ------------------------------------------------------------ |
+| utxo-count                       | A UTXO is **the amount of digital currency remaining after a cryptocurrency transaction is executed**. |
+| cost-per-transaction-percent     | *Cost* % *of Transaction* Volume*A* chart showing miners revenue as *percentage of* the *transaction* volume. |
+| hash-rate                        | Hash rate is **a measure of the total computational power being used by a proof-of-work cryptocurrency network to process transactions in a blockchain**. It can also be a measure of how fast a cryptocurrency miner's machines complete these computations. |
+| n-transactions-excluding-popular | The total number of *transactions excluding* those involving the network's 100 most *popular*addresses. |
+| difficulty                       | A relative measure of how difficult it is to mine a new block for the blockchain. |
+| mempool-size                     | The aggregate size in bytes of transactions waiting to be confirmed. |
+| output-volume                    | The total value of all transaction *outputs* per day. This includes coins returned to the sender as change. |
+| fees-usd-per-transaction         | *Fees Per Transaction* (*USD*)Average *transaction fees in USD per transaction*. |
+| transaction-fees-usd             | Total Transaction Fees (USD). The total USD value of all transaction fees paid to miners. This does not include coinbase block rewards. |
+| n-unique-addresses               | The total number of *unique addresses* used on the *blockchain*. |
+| mempool-count                    | The *mempool* is where all the valid transactions wait to be confirmed by the *Bitcoin* network. |
+| transactions-per-second          | Transaction Rate Per SecondThe number of transactions added to the mempool per second. |
+| mempool-growth                   | *Mempool* Size *Growth*The rate at which the *mempool* is *growing* in bytes per second. |
+| my-wallet-n-users                | The total number of unique Blockchain.com wallets created.   |
+| miners-revenue                   | *Miners Revenue* (USD)Total value in USD of coinbase block rewards and transaction fees paid to miners. |
+| n-payments                       | The total number of confirmed payments per day.              |
+| estimated-transaction-volume     | *Estimated Transaction* Value (USD)The total *estimated* value in USD of *transactions* on the *blockchain*. |
+| n-transactions                   | The total number of transactions on the blockchain.          |
+| transaction-fees                 | The total BTC value of all transaction fees paid to miners. This does not include coinbase block rewards. |
+| estimated-transaction-volume-usd | *Estimated Transaction* Value (*USD*)The total *estimated* value in *USD* of *transactions* on the *blockchain*. |
+| cost-per-transaction             | A chart showing miners revenue divided by the number of transactions. |
 
 > Resource
 
