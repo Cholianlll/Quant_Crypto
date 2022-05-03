@@ -20,8 +20,8 @@ cholianli970518 dot gmail dot com
     * Cross-exchange arbitrage strategy (updating)
     * ARIMA-based volatility modelling strategy (updating)
     * GJR-GARCH-based multiple tokens strategies (updating)
-    * LSTM-based multiple tokens strategy (updating)
-    * Simple RNN-strategy
+    * [LSTM-based multiple tokens strategy](#lstm)
+    * [Simple RNN-strategy](#rnn)
     * Attentions-based trend signals identification (updating)
 
 * [Useful link and website for cryptocurrency](#useful-link-and-website-for-cryptocurrency)
