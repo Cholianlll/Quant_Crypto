@@ -21,6 +21,7 @@ cholianli970518 dot gmail dot com
     * ARIMA-based volatility modelling strategy (updating)
     * GJR-GARCH-based multiple tokens strategies (updating)
     * LSTM-based multiple tokens strategy (updating)
+    * Simple RNN-strategy
     * Attentions-based trend signals identification (updating)
 
 * [Useful link and website for cryptocurrency](#useful-link-and-website-for-cryptocurrency)
@@ -213,6 +214,35 @@ every 0.1 second for one detection.
 python Funding_rate_trading_update_20210121.py
 ```
 
+## RNN
+
+-----RNN----- 
+
+```
+MAE test set 37056.61 
+
+MSE test set 1447203315.52 
+
+MAPE test set 0.7784 
+```
+
+-----drift(Benchmark)----- 
+
+```
+MAE test set 1126.46 
+
+MSE test set 2409500.28 
+
+MAPE test set 0.0239
+```
+
+## LSTM
+
+```
+MAE: 0.0375
+```
+
+
 
 # Useful link and website for cryptocurrency
 
@@ -269,7 +299,6 @@ python Funding_rate_trading_update_20210121.py
 ## Crypto wallet
 
 [Metamask](https://metamask.io/)
-
 
 
 
