@@ -60,8 +60,6 @@ Funding rates are periodic payments either to traders that are long or short bas
 
 Funding rates on Binance are collected every hour and we can see that some crypto assets have reached more than 1% a day. Essentially anyone who is short on the DEFI-USDT contract will be collecting 0.3714% every eight hours to hold that position.......[Read more](https://jamesbachini.com/futures-funding-rate-strategy/)
 
-![EMA plot](./docs/FundingRate.png)
-
 data: [coinglass](https://www.coinglass.com/zh/FundingRate)
 
 
