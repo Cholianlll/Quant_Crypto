@@ -15,7 +15,7 @@ cholianli970518 dot gmail dot com
 * Strategies
 
     * 🔥:star:[EMA strategy (Finished)](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/EMA%20Strategy)
-    * 🔥:star:[Cross-exchange funding rate arbitrage strategy (Finished)]()
+    * 🔥:star:[Cross-exchange funding rate arbitrage strategy (Finished)](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/FundingRateArbitrage)
     * :star:[Nagative Funding rate strategy (Finished)](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/NagativeFundingRate)
     * Cross-exchange price arbitrage strategy (updating)
     * ARIMA-based volatility modelling strategy (updating)
