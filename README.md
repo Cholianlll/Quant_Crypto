@@ -15,7 +15,7 @@ cholianli970518 dot gmail dot com
     
 * Strategies
 
-    * [EMA strategy](./strategies/ema/readme.md)
+    * [EMA strategy](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/ema)
     * [Funding rate strategy](#funding-rate-strategy)
 
     * Cross-exchange arbitrage strategy (updating)
