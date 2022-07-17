@@ -1,10 +1,12 @@
 # Quantitative Trading on Cryptocurrency
 
+Different quantitative strategies on the cryptocurrency, where has been verified with real trading.
+
 Cholian (Chao Li)
 
 cholianli970518 dot gmail dot com
 
-> This is a free version with limited features. If you want to experience the complete features, please contact the author.
+> This is a free version with limited features. If you want to implement it in your real account, please contact the author.
 
 # Table of Contents
 * [Introduction](#introduction)
@@ -27,8 +29,6 @@ cholianli970518 dot gmail dot com
 * [Useful link and website for cryptocurrency](#useful-link-and-website-for-cryptocurrency)
 
 ## Introduction
-
-Different quantitative strategies on the cryptocurrency, where has been verified with real trading.
 
 **Exchange**: [Binance](https://www.binance.com/en)
 

@@ -1,6 +1,24 @@
-# Abstract:
+[TOC]
+
+# Introduction:
+
 Author: Cholian
-> Question: How to capture the trend of cryptocurrency (BTCUSDT)?
+
+Email: cholianli970518@gamil.com
+
+# Strategy
+
+## What is the EMA strategy?
+
+An exponential moving average is a technical indicator that gives greater weighting to recent prices in its calculation. As a result, EMA responds more quickly to the latest price changes, as compared to a simple moving average (SMA), which has a bigger lag.... [Read more](https://learn.bybit.com/trading/exponential-moving-average-ema-crypto/)
+
+## How to build a quantitative strategy with EMA?
+
+When one moving average moves above another, it creates a profitable trading opportunity. One of the most effective crossover strategies is known as the golden cross. When the 50 EMA moves above the 200 SMA, it indicates that short-term bulls are becoming more aggressive, while long-term traders are still bullish....[Read more](https://learn.bybit.com/trading/exponential-moving-average-ema-crypto/)
+
+![image-20220717125609855](assets/image-20220717125609855.png)
+
+## How to capture the trend of cryptocurrency (BTCUSDT)?
 
 
 By capturing the trend of the current markets, we can do the following things:
@@ -17,8 +35,7 @@ By capturing the trend of the current markets, we can do the following things:
 
 * Evaluating the effectiveness of some technicals in the crypto market
 
-
-> Model assumption
+## Model Comparison
 
 
 | | MA | <font color = 'red'>EMA</font> | Holt-winter | LSTM |
@@ -27,7 +44,7 @@ By capturing the trend of the current markets, we can do the following things:
 
 # EMA
 
-> Data collection
+## Data collection
 
 Build my own API toolboxes from the [Binance APIs](https://binance-docs.github.io/apidocs/spot/en/).
 
@@ -49,7 +66,7 @@ def exchangeInfo():
     return data
 ```
 
-> Trading market selection
+## Trading market selection
 
 | | Spot | Future | <font color = 'red'>Perpetual swap </font>| Option |
 | ---- | ----------- | ----------- | ----------- | ----------- | 
@@ -62,7 +79,7 @@ def exchangeInfo():
 
 It is `BTCUSDT perpetual future contract`
 
-> Backtesting
+## Backtesting
 
 | Parameter | Description |
 | ----------- | ----------- |
@@ -75,13 +92,11 @@ It is `BTCUSDT perpetual future contract`
 | Leverage | X1|
 | Commission | 0.04%|
 
-* Training set backtesting
+**Training set backtesting**
 
 ![TrainingSet](./doc/TrainingSet.png)
 
-
-
-> Grid Validation
+## Grid Validation
 
 To finding the most appropriate EMA parameter, grid validation is done from `10` to `99`. The assessment criterions are `Sharp ratio` and `Final return` between `minute-frequency` data to `day-frequency` data. 
 
@@ -91,7 +106,7 @@ The partial sample validation result is as following:
 
 Finally, the fast line is `36` and the slow is `60`.
 
-> Backtesing on test data
+## Backtesing on test data
 
 * Test set backtesting (36,60)
 
@@ -115,3 +130,34 @@ Language: `Python`
 
 ![Server](./doc/Server.png)
 
+# Run strategy
+
+## Strategy parameters
+
+```python
+symbol = 'BTCUSDT' # trading symbol
+quantity = 0.037 # trading quantity
+# Trading notional value = Market price * quantity.
+interval = '6h' # trading based frequency, for more frequency, please refer to the [Binance API doc](https://binance-docs.github.io/apidocs/spot/en/#change-log)
+ema_a_period = 36 # ema_a refers to the faster line
+ema_b_period = 60 # while ema_b refer to the slow line.
+```
+
+## Run the strategy
+
+Follow the [official instruction](https://www.binance.com/en/support/faq/360002502072) to create a pair of Binance API key and secret.
+
+```python
+KEY = 'your API KEY'
+SECRET = 'your API SECRET'
+```
+
+Then execute the script with:
+
+```bash
+python Binance_EMA_trading_update_20220114.py
+```
+
+# Reference
+
+Reference: https://learn.bybit.com/trading/exponential-moving-average-ema-crypto/
