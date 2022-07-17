@@ -108,7 +108,7 @@ Finally, the fast line is `36` and the slow is `60`.
 
 ## Backtesing on test data
 
-* Test set backtesting (36,60)
+Test set backtesting (36,60)
 
 From `2021-04-26 05:59:59` To `2021-12-31 17:59:59`
 
@@ -116,19 +116,14 @@ From `$1000` to `$1646`
 
 ![TestSet](./doc/TestSet.png)
 
-> Real trading implementation
+## Strategy measurements
 
-Server: `Tencent`
-
-Location: `Hong Kong, China`
-
-Systerm: `Windows Server 2012 R2`
-
-Envirment: `Miniconda`
-
-Language: `Python`
-
-![Server](./doc/Server.png)
+```
+Sharp Ratio: 3.56
+Final return（2021-04-26 - 2021-12-31）：77.36%
+Maximum Drawdown： 11.71%
+......
+```
 
 # Run strategy
 
@@ -157,6 +152,20 @@ Then execute the script with:
 ```bash
 python Binance_EMA_trading_update_20220114.py
 ```
+
+## Real trading implementation
+
+Server: `Tencent`
+
+Location: `Hong Kong, China`
+
+Systerm: `Windows Server 2012 R2`
+
+Envirment: `Miniconda`
+
+Language: `Python`
+
+![Server](./doc/Server.png)
 
 # Reference
 
