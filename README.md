@@ -15,14 +15,14 @@ cholianli970518 dot gmail dot com
     
 * Strategies
 
-    * [EMA strategy](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/EMA%20Strategy)
-    * [Nagative Funding rate strategy](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/NagativeFundingRate)
+    * [EMA strategy (Finished)](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/EMA%20Strategy)
+    * [Nagative Funding rate strategy (Finished)](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/NagativeFundingRate)
 
-    * Cross-exchange arbitrage strategy (updating)
+    * [Cross-exchange arbitrage strategy (Finished)]()
     * ARIMA-based volatility modelling strategy (updating)
     * GJR-GARCH-based multiple tokens strategies (updating)
-    * [LSTM-based multiple tokens strategy](#lstm)
-    * [Simple RNN-strategy](#rnn)
+    * [LSTM-based multiple tokens strategy-OnGoing](#lstm)
+    * [Simple RNN-strategy (OnGoing)](#rnn)
     * Attentions-based trend signals identification (updating)
 
 * [Useful link and website for cryptocurrency](#useful-link-and-website-for-cryptocurrency)
@@ -39,8 +39,6 @@ cholianli970518 dot gmail dot com
 
 [Open an account in Binance](https://accounts.binance.com/en/register)
 
-
-
 # Strategy comparison
 
 | Strategy              | Frequency | Risk natural | Sharp ratio | Annual return | Maximum Drawdown |
@@ -50,35 +48,6 @@ cholianli970518 dot gmail dot com
 |                       |           |              |             |               |                  |
 |                       |           |              |             |               |                  |
 |                       |           |              |             |               |                  |
-
-
-## RNN
-
------RNN----- 
-
-```
-MAE test set 37056.61 
-
-MSE test set 1447203315.52 
-
-MAPE test set 0.7784 
-```
-
------drift(Benchmark)----- 
-
-```
-MAE test set 1126.46 
-
-MSE test set 2409500.28 
-
-MAPE test set 0.0239
-```
-
-## LSTM
-
-```
-MAE: 0.0375
-```
 
 
 
