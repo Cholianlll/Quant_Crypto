@@ -186,6 +186,5 @@ cython_debug/
 #.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,python
-
 *.csv
 Crypto_analysis/Network analysis on cryptocurrency/bnb_2016tonow.csv
