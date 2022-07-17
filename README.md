@@ -10,21 +10,19 @@ cholianli970518 dot gmail dot com
 
 # Table of content
 * [Introduction](#introduction)
-* [Open an account](#open-an-account)
+* [Support exchanges](#support-exchanges)
     * [Binance](#biance)
-    
 * Strategies
 
-    * [EMA strategy (Finished)](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/EMA%20Strategy)
-    * [Nagative Funding rate strategy (Finished)](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/NagativeFundingRate)
-
-    * [Cross-exchange arbitrage strategy (Finished)]()
+    * 🔥:star:[EMA strategy (Finished)](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/EMA%20Strategy)
+    * 🔥:star:[Cross-exchange funding rate arbitrage strategy (Finished)]()
+    * :star:[Nagative Funding rate strategy (Finished)](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/NagativeFundingRate)
+    * Cross-exchange price arbitrage strategy (updating)
     * ARIMA-based volatility modelling strategy (updating)
     * GJR-GARCH-based multiple tokens strategies (updating)
-    * [LSTM-based multiple tokens strategy-OnGoing](#lstm)
-    * [Simple RNN-strategy (OnGoing)](#rnn)
+    * 🚧[LSTM-based multiple tokens strategy (OnGoing)](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/LSTM)
+    * 🚧[Simple RNN-strategy (OnGoing)](https://github.com/Cholianlll/Quant_Crypto/tree/main/strategies/RNN)
     * Attentions-based trend signals identification (updating)
-
 * [Useful link and website for cryptocurrency](#useful-link-and-website-for-cryptocurrency)
 
 ## Introduction
@@ -33,7 +31,7 @@ cholianli970518 dot gmail dot com
 
 **API**: [Binance API](https://binance-docs.github.io/apidocs/spot/en/)
 
-## Open an account
+## Support exchanges
 
 ### Binance
 
