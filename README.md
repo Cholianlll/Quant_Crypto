@@ -4,7 +4,7 @@ Different quantitative strategies on the cryptocurrency, where has been verified
 
 Cholian (Chao Li)
 
-cholianli970518 dot gmail dot com
+cholian.chaoli@gmail.com
 
 > This is a free version with limited features. If you want to implement it in your real account, please contact the author.
 
