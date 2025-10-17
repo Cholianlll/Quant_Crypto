@@ -2,8 +2,6 @@
 
 Different quantitative strategies on the cryptocurrency, where has been verified with real trading.
 
-Cholian (Chao Li)
-
 cholian.chaoli@gmail.com
 
 > This is a free version with limited features. If you want to implement it in your real account, please contact the author.
